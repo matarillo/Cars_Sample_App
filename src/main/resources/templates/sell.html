@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::title},~{::body})}">
+<head>
+    <title>Supercar Trader - Sell</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+    <p class="normal">Sell<br><img src="/images/line.gif"></p>
+    <p class="normal">Please enter details of your supercar:</p>
+    <form action="/sell" method="post">
+        <table width="80%" border="0">
+            <tr>
+                <td>Manufacturer:<br>&nbsp;<select name="manufacturer" required>
+                    <option th:each="manu : ${manufacturers}" th:value="${manu.manufacturerId}" th:text="${manu.name}"></option>
+                </select>&nbsp;*</td>
+            </tr>
+            <tr>
+                <td>Model:<br>&nbsp;<input type="text" name="model" required th:value="${carForm.model}">&nbsp;*</td>
+            </tr>
+            <tr>
+                <td>Version:<br>&nbsp;<input type="tel" name="name" required th:value="${carForm.name}">&nbsp;*</td>
+            </tr>
+            <tr>
+                <td>Colour:<br>&nbsp;<input type="text" name="colour" th:value="${carForm.colour}"></td>
+            </tr>
+            <tr>
+                <td>Year:<br>&nbsp;<input type="number" name="year" min="0" th:value="${carForm.year}"></td>
+            </tr>
+            <tr>
+                <td>Price:<br>&nbsp;<input type="number" name="price" min="0" th:value="${carForm.price}"></td>
+            </tr>
+            <tr>
+                <td>Summary:<br><img src="/images/line.gif"><br><br>&nbsp;<textarea rows="6" cols="45" name="summary" th:text="${carForm.summary}"></textarea></td>
+            </tr>
+            <tr>
+                <td>Detailed Description:<br><img src="/images/line.gif"><br><br>&nbsp;<textarea rows="12" cols="45" name="description" th:text="${carForm.description}"></textarea></td>
+            </tr>
+            <tr>
+                <td><input type="image" src="/images/submit_button.gif" style="vertical-align:middle"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

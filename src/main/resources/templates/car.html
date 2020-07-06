@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::title},~{::body})}">
+<head>
+    <title th:inline="text">Supercar Trader - [[${car.name}]] [[${car.model}]]</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <p><img width="150" height="100" th:src="@{|/images/cars/${car.photo}.jpg|}" style="vertical-align:middle"><img th:src="@{|/images/manufacturers/${manufacturer.logo}|}">
+                    <a th:href="@{/enquire(cid=${car.carId},carName=|${car.name}&nbsp;${car.model}|)}"><img src="/images/enquire_button.gif"></a>
+                </p>
+                <p class="car"><b>Performance Summary:</b><br></p>
+                <p class="car" th:inline="text">Name:&nbsp;[[${car.name}]]<br>
+                    Model:&nbsp;[[${car.model}]]<br>
+                    Summary:&nbsp;[[${car.summary}]]<br>
+                    Description:&nbsp;[[${car.description}]]<br>
+                    Price:&nbsp;&euro;[[${car.price}]]<br>
+                    Colour:&nbsp;[[${car.colour}]]<br>
+                    Year:&nbsp;[[${car.year}]]</p>
+            </td>
+        </tr>
+        <tr>
+            <td><a th:href="@{/car(query=carEnquiries,cid=${car.carId})}"><img src="/images/view_enquiries_button.gif"/></a></td>
+        </tr>
+        <th:block th:each="enquiry : ${enquiries}">
+        <tr class="grey">
+            <td>
+                <p th:inline="text">From:[[${enquiry.name}]],&nbsp;[[${enquiry.email}]]<br>[[${enquiry.comment}]]<br><img src="/images/line.gif"></p>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        </th:block>
+    </table>
+    <p th:if="${(enquiries != null) and (enquiries.isEmpty())}">No Enquiries Found.</p>
+</body>
+</html>

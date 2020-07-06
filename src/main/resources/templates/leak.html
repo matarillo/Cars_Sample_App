@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::title},~{::body})}">
+<head>
+    <title>Supercar Trader - Leak</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+    <p class="normal">Leak<br><img src="/images/line.gif"></p>
+    <p class="normal">
+        This page generates a memory leak. It is backed by a static List of byte[] which can be added to using the below Form. Hitting submit will add a number of byte[]s to the List with each array of the specified size
+    </p>
+    <p class="normal">
+        Enter the number and size of array to add to the collection:
+    </p>
+    <form action="/leak" method="post">
+        <table width="80%" border="0">
+            <tr>
+                <td>Number:<br>&nbsp;<input type="number" name="number" min="0"></td>
+            </tr>
+            <tr>
+                <td>Size:<br>&nbsp;<input type="number" name="size" min="0"></td>
+            </tr>
+            <tr>
+                <td><input type="image" src="/images/submit_button.gif" style="vertical-align:middle"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::title},~{::body})}">
+<head>
+    <title>Supercar Trader - Search</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+    <form name="searchForm" action="/search" method="GET">
+        <input type="hidden" name="query" value="search">
+        <p class="normal">Search<br><img src="/images/line.gif"></p>
+        <p class="normal">Please enter your search criteria, for example 'Lamborghini', or '911'<br>
+            <br><input type="text" name="criteria" />&nbsp;
+            <input type="image" src="/images/search_button.gif" style="vertical-align:middle"><br>
+            <th:block th:if="${criteria}">
+            <br>Your search '<th:block th:text="${criteria}"></th:block>' returned the following <th:block th:text="${cars.size()}"></th:block> results:
+            </th:block></p>
+        <table>
+            <tr class="grey" th:each="car : ${cars}"> 
+                <td>
+                    <p><img th:src="@{|/images/cars/${car.photo}.jpg|}"></p>
+                </td>
+                <td>
+                    <p class="summary"><a th:href="@{/car(query=car,cid=${car.carId})}" th:text="${car.name} + '&nbsp;' + ${car.model}"></a>&nbsp;&nbsp;<th:block th:text="${car.summary}"></th:block></p>
+                </td>
+                <td>
+                    <p th:text="|&euro;${car.price}|"></p>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html th:fragment="layout (title,template)">
+<head>
+    <title th:replace="${title}"></title>
+    <link rel="stylesheet" href="/styles/trader.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <td align="left" colspan="5"><a href="/home"><img alt="Supercar Trader" src="/images/logo.gif"></a></td>
+        </tr>
+        <tr>
+            <td><a href="/supercars"><img src="/images/supercars_but.gif"></a></td>
+            <td><a href="/search"><img src="/images/search_but.gif"></a></td>
+            <td><a href="/sell"><img src="/images/sell_but.gif"></a></td>
+            <td><a href="/enquire"><img src="/images/enquire_but.gif"></a></td>
+            <td><a href="/insurance"><img src="/images/insurance_but.gif"></a></td>
+            <td><a href="/about"><img src="/images/aboutus_but.gif"></a></td>
+        </tr>
+    </table>
+    <th:block th:include="${template}" />
+    <br>
+    <img src="/images/pipe.gif">
+</body>
+</html>

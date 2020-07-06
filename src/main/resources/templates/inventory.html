@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::title},~{::body})}">
+<head>
+    <title>Supercar Trader - Inventory</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+    <p class="normal">Inventory<br><img src="/images/line.gif"></p>
+    <table>
+        <tr th:each="manu : ${manufacturers}">
+            <td bgcolor="#ffffff">
+                <p><a th:href="@{/cars(query=manu,mid=${manu.manufacturerId})}" th:text="${manu.name}"></a></p>
+            </td>
+            <td>
+                <p><a th:href="@{/cars(query=manu,mid=${manu.manufacturerId})}"><img
+                        th:src="@{|/images/manufacturers/${manu.logo}|}"></a></p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
