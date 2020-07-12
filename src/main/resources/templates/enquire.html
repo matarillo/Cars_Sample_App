@@ -1,0 +1,28 @@
+{#include fragments/layout}
+    {#title}Supercar Trader - Enquire{/title}
+    {#body}
+    <p class="normal">Enquire<br><img src="/images/line.gif"></p>
+    <form action="/enquire?query=save" method="post">
+        <table width="80%" border="0">
+            <tr>
+                <td>Name:<br>&nbsp;<input type="text" name="name" value="{enquiryForm.name}" required>&nbsp;*</td>
+            </tr>
+            <tr>
+                <td>Email:<br>&nbsp;<input type="email" name="email" value="{enquiryForm.email}" required>&nbsp;*</td>
+            </tr>
+            <tr>
+                <td>Car:<br>&nbsp;<input type="text" name="carName" value="{enquiryForm.carName ?: '(no car specified)'}" readonly></td>
+            </tr>
+            <tr>
+                <td><input type="hidden" name="cid" value="{enquiryForm.cid}"></td>
+            </tr>
+            <tr>
+                <td>Description:<br><img src="/images/line.gif"><br><br>&nbsp;<textarea rows="12" cols="45" name="comment">{enquiryForm.comment}</textarea></td>
+            </tr>
+            <tr>
+                <td><input type="image" src="/images/submit_button.gif" style="vertical-align:middle"></td>
+            </tr>
+        </table>
+    </form>
+    {/body}
+{/include}

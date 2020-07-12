@@ -1,0 +1,42 @@
+{#include fragments/layout}
+    {#title}Supercar Trader - Sell{/title}
+    {#body}
+    <p class="normal">Sell<br><img src="/images/line.gif"></p>
+    <p class="normal">Please enter details of your supercar:</p>
+    <form action="/sell" method="post">
+        <table width="80%" border="0">
+            <tr>
+                <td>Manufacturer:<br>&nbsp;<select name="manufacturer" required>
+{#for manu in manufacturers}
+                    <option value="{manu.manufacturerId}">{manu.name}</option>
+{/for}
+                </select>&nbsp;*</td>
+            </tr>
+            <tr>
+                <td>Model:<br>&nbsp;<input type="text" name="model" required value="{carForm.model}">&nbsp;*</td>
+            </tr>
+            <tr>
+                <td>Version:<br>&nbsp;<input type="tel" name="name" required value="{carForm.name}">&nbsp;*</td>
+            </tr>
+            <tr>
+                <td>Colour:<br>&nbsp;<input type="text" name="colour" value="{carForm.colour}"></td>
+            </tr>
+            <tr>
+                <td>Year:<br>&nbsp;<input type="number" name="year" min="0" value="{carForm.year}"></td>
+            </tr>
+            <tr>
+                <td>Price:<br>&nbsp;<input type="number" name="price" min="0" value="{carForm.price}"></td>
+            </tr>
+            <tr>
+                <td>Summary:<br><img src="/images/line.gif"><br><br>&nbsp;<textarea rows="6" cols="45" name="summary">{carForm.summary}</textarea></td>
+            </tr>
+            <tr>
+                <td>Detailed Description:<br><img src="/images/line.gif"><br><br>&nbsp;<textarea rows="12" cols="45" name="description">{carForm.description}</textarea></td>
+            </tr>
+            <tr>
+                <td><input type="image" src="/images/submit_button.gif" style="vertical-align:middle"></td>
+            </tr>
+        </table>
+    </form>
+    {/body}
+{/include}

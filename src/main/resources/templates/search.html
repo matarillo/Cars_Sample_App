@@ -1,0 +1,30 @@
+{#include fragments/layout}
+    {#title}Supercar Trader - Search{/title}
+    {#body}
+    <form name="searchForm" action="/search" method="GET">
+        <input type="hidden" name="query" value="search">
+        <p class="normal">Search<br><img src="/images/line.gif"></p>
+        <p class="normal">Please enter your search criteria, for example 'Lamborghini', or '911'<br>
+            <br><input type="text" name="criteria" />&nbsp;
+            <input type="image" src="/images/search_button.gif" style="vertical-align:middle"><br>
+{#if criteria}
+                <br>Your search '{criteria}' returned the following {cars.size()} results:
+{/if}
+        <table>
+{#if cars}{#for car in cars}
+            <tr class="grey">
+                <td>
+                    <p><img src="/images/cars/{car.photo}.jpg"></p>
+                </td>
+                <td>
+                    <p class="summary"><a href="/car?query=car&cid={car.carId}">{car.name}&nbsp;{car.model}</a>&nbsp;&nbsp;{car.summary}</p>
+                </td>
+                <td>
+                    <p>&euro;{car.price}</p>
+                </td>
+            </tr>
+{/for}{/if}
+        </table>
+    </form>
+    {/body}
+{/include}

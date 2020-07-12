@@ -1,0 +1,38 @@
+{#include fragments/layout}
+    {#title}Supercar Trader - {car.name} {car.model}{/title}
+    {#body}
+    <table>
+        <tr>
+            <td>
+                <p><img width="150" height="100" src="/images/cars/{car.photo}.jpg" style="vertical-align:middle"><img src="/images/manufacturers/{manufacturer.logo}">
+                    <a href="/enquire?cid={car.carId}&carName={car.name}&nbsp;{car.model}"><img src="/images/enquire_button.gif"></a>
+                </p>
+                <p class="car"><b>Performance Summary:</b><br></p>
+                <p class="car">Name:&nbsp;{car.name}<br>
+                    Model:&nbsp;{car.model}<br>
+                    Summary:&nbsp;{car.summary}<br>
+                    Description:&nbsp;{car.description}<br>
+                    Price:&nbsp;&euro;{car.price}<br>
+                    Colour:&nbsp;{car.colour}<br>
+                    Year:&nbsp;{car.year}</p>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="/car?query=carEnquiries&cid={car.carId}"><img src="/images/view_enquiries_button.gif"/></a></td>
+        </tr>
+{#if enquiries}{#for enquiry in enquiries}
+        <tr class="grey">
+            <td>
+                <p>From:{enquiry.name},&nbsp;{enquiry.email}<br>{enquiry.comment}<br><img src="/images/line.gif"></p>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+{/for}{/if}
+    </table>
+{#if (enquiries != null) && (enquiries.isEmpty()) }
+    <p>No Enquiries Found.</p>
+{/if}
+    {/body}
+{/include}

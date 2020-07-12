@@ -1,0 +1,18 @@
+{#include fragments/layout}
+    {#title}Supercar Trader - Inventory{/title}
+    {#body}
+    <p class="normal">Inventory<br><img src="/images/line.gif"></p>
+    <table>
+{#for manu in manufacturers}
+        <tr>
+            <td bgcolor="#ffffff">
+                <p><a href="/cars?query=manu&mid={manu.manufacturerId}">{manu.name}</a></p>
+            </td>
+            <td>
+                <p><a href="/cars?query=manu&mid={manu.manufacturerId}"><img src="/images/manufacturers/{manu.logo}"></a></p>
+            </td>
+        </tr>
+{/for}
+    </table>
+    {/body}
+{/include}
