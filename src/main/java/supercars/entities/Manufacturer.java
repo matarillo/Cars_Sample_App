@@ -10,7 +10,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @Getter
 @Setter
 @RequiredArgsConstructor
-@Table("MANUFACTURERS")
+@Table("manufacturers")
 public class Manufacturer {
     @Id
     private int manufacturerId;

@@ -10,7 +10,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @Setter
 @Getter
 @RequiredArgsConstructor
-@Table("CARS")
+@Table("cars")
 public class Car {
     @Id
     private Integer carId; // null before insert

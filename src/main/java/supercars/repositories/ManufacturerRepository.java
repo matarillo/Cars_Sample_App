@@ -9,9 +9,9 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface ManufacturerRepository extends Repository<Manufacturer, String> {
-    @Query("SELECT MANUFACTURER_ID, NAME, WEB, EMAIL, LOGO FROM MANUFACTURER WHERE MANUFACTURER_ID = :manufacturerId")
+    @Query("SELECT manufacturer_id, name, web, email, logo FROM manufacturer WHERE manufacturer_id = :manufacturerId")
     Optional<Manufacturer> findById(@Param("manufacturerId") int manufacturerId);
 
-    @Query("SELECT MANUFACTURER_ID, NAME, WEB, EMAIL, LOGO FROM MANUFACTURER ORDER BY NAME")
+    @Query("SELECT manufacturer_id, name, web, email, logo FROM manufacturer ORDER BY NAME")
     Collection<Manufacturer> findAllOrderByNameAsc();
 }
