@@ -1,6 +1,7 @@
 package supercars.services;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import supercars.ApplicationException;
 import supercars.entities.Car;
@@ -20,6 +21,7 @@ public class CarService {
         this.repository = repository;
     }
 
+    @Transactional
     public Car saveCar(Car car) {
         try {
             car = repository.save(car);

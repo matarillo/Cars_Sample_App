@@ -1,6 +1,7 @@
 package supercars.services;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import supercars.entities.Enquiry;
 import supercars.logging.LogLevel;
 import supercars.logging.Logger;
@@ -36,6 +37,7 @@ public class EnquiryService {
         }
     }
 
+    @Transactional
     public Enquiry saveEnquiry(Enquiry enquiry) {
         try {
             enquiry = repository.save(enquiry);
